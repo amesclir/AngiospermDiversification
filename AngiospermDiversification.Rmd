@@ -1,0 +1,24 @@
+---
+title: "AngiospermDiversification"
+author: "Marcial Escudero"
+date: "12/14/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+library(ape)
+library(phytools)
+library(treeio)
+tree <- read.beast(file= "medusa_annotated_bd_ot_60_0_1min.bin.tre")
+## get a list of all genera
+tips<-tree@phylo$tip.label
+tips
+table <- tree@data[tree@data$node %in% 1:79882,]
+table
+dim(table)
+table <- cbind(tree@phylo$tip.label,table)
+table
+write.csv(table, file ="medusafeatures.csv")
+```
+
